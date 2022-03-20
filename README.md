@@ -9,4 +9,4 @@
  Continuation of [FadedDiscordBot.PY](https://github.com/user/repo/blob/branch/other_file.md)
  
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/Hen676/FadedDiscordBot.NET/blob/main/LICENSE) file for details
+[MIT](https://github.com/Hen676/FadedDiscordBot.NET/main/LICENSE)
