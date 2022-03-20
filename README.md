@@ -9,4 +9,4 @@
  Continuation of [FadedDiscordBot.PY](https://github.com/user/repo/blob/branch/other_file.md)
  
 ## License
-[MIT](https://github.com/Hen676/FadedDiscordBot.NET/main/LICENSE)
+[MIT](https://github.com/Hen676/FadedDiscordBot.NET/blob/main/LICENSE)
