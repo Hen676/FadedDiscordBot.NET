@@ -1,0 +1,25 @@
+{
+  "Bot": {
+    "AutoRole": {
+      "Toggle": false,
+      "Role": null
+    },
+    "Gw2": {
+      "ApiKey": "<Insert GW2 API Key>",
+      "GuildId": "<Inset GW2 Guild Id>"
+    },
+    "Motd": {
+      "Channel": null,
+      "Message": null,
+      "Update": false
+    },
+    "Raid": {
+      "Channel": null,
+      "Message": null,
+      "Update": false
+    },
+    "ShardIdDebug": 0,
+    "Token": "<Insert Bot Token>",
+    "TokenDebug": "<For debug use only>"
+  }
+}
