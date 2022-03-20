@@ -7,3 +7,6 @@
  Discord Bot for the Faded Vanguard server. Made using C#, Discord.NET and Coravel.
  
  Continuation of [FadedDiscordBot.PY](https://github.com/user/repo/blob/branch/other_file.md)
+ 
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/Hen676/FadedDiscordBot.NET/master/LICENSE.md) file for details
