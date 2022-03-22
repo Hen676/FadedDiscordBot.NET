@@ -21,14 +21,14 @@ namespace FadedVanguardBot0._1.Module
 
         private Task OnUserJoinedEvent(SocketGuildUser arg)
         {
-            if(_config.Bot.AutoRole.Toggle && _config.Bot.AutoRole.Role.HasValue)
+            if (_config.Bot.AutoRole.Toggle && _config.Bot.AutoRole.Role.HasValue)
                 arg.AddRoleAsync(_config.Bot.AutoRole.Role.Value);
             return Task.CompletedTask;
         }
 
         [RequireUserPermission(GuildPermission.Administrator, Group = "Permission")]
         [RequireOwner(Group = "Permission")]
-        [SlashCommand("autorole", "Setup simple auto role command.")]
+        [SlashCommand("autorole", "Setup simple autorole command.")]
         public async Task AutoRole(SocketRole role = null, bool? on = null)
         {
             if (role.Permissions.Administrator)
@@ -53,7 +53,7 @@ namespace FadedVanguardBot0._1.Module
                 _config.SaveConfig();
 
             string startingstring = toggle ? "Updated" : "Current";
-            await RespondAsync($"{startingstring} autorole update command [@{_config.Bot.AutoRole.Role} and {_config.Bot.AutoRole.Toggle}]");
+            await RespondAsync($"{startingstring} autorole update command: [@{_config.Bot.AutoRole.Role} and {_config.Bot.AutoRole.Toggle}]");
         }
 
         [SlashCommand("ping", "Simple ping command!")]

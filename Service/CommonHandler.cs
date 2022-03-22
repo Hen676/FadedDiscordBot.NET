@@ -21,7 +21,7 @@ namespace FadedBot.Service
             _provider = provider;
         }
 
-        public async Task InitializeAsync() 
+        public async Task InitializeAsync()
         {
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _provider);
 
@@ -54,7 +54,7 @@ namespace FadedBot.Service
         {
             if (!arg3.IsSuccess)
             {
-                
+
                 ErrorHandling(arg3);
             }
             return Task.CompletedTask;

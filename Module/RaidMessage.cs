@@ -1,18 +1,15 @@
 ﻿using Discord;
 using Discord.Interactions;
-using Discord.Rest;
 using Discord.WebSocket;
 using FadedVanguardBot0._1.Events;
-using FadedVanguardBot0._1.Service;
 using FadedVanguardBot0._1.Util;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Timers;
 
 namespace FadedVanguardBot0._1.Module
 {
-    [Group("raid", "Commands to edit Raid scheduled messages")]
+    [Group("raid", "Commands to edit Raid scheduled messages.")]
     public class RaidMessage : InteractionModuleBase<SocketInteractionContext>
     {
         private readonly Config _config;
@@ -29,7 +26,7 @@ namespace FadedVanguardBot0._1.Module
 
         private async Task OnReactionAddedEvent(Cacheable<IUserMessage, ulong> CachMessage, Cacheable<IMessageChannel, ulong> CachChannel, SocketReaction Reaction)
         {
-            if (_config.Bot.Raid.Message.HasValue) 
+            if (_config.Bot.Raid.Message.HasValue)
             {
                 if (CachMessage.Id == _config.Bot.Raid.Message && !Reactions.reactionNames.Contains(Reaction.Emote.Name))
                 {
@@ -40,7 +37,7 @@ namespace FadedVanguardBot0._1.Module
                         var message = await CachChannel.Value.GetMessageAsync(CachMessage.Id);
                         await message.RemoveReactionAsync(Reaction.Emote, Reaction.User.GetValueOrDefault());
                     }
-                    else 
+                    else
                     {
                         var channel = await _discord.GetChannelAsync(CachChannel.Id);
                         if (channel is SocketTextChannel channel1)
@@ -85,7 +82,7 @@ namespace FadedVanguardBot0._1.Module
 
             // reply with the answer
             string startingstring = toggle ? "Updated" : "Current";
-            await RespondAsync($"{startingstring} raid update command [<#{_config.Bot.Raid.Channel}> and {_config.Bot.Raid.Update}]");
+            await RespondAsync($"{startingstring} raid update command: [<#{_config.Bot.Raid.Channel}> and {_config.Bot.Raid.Update}]");
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.IO;
 
 namespace FadedVanguardBot0._1.Util

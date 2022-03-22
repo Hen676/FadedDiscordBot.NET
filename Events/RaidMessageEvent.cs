@@ -29,7 +29,7 @@ namespace FadedVanguardBot0._1.Events
                 if (_config.Bot.Raid.Message.HasValue)
                 {
                     var oldmessage = channel.GetMessageAsync(_config.Bot.Raid.Message.Value).Result;
-                    if(oldmessage != null)
+                    if (oldmessage != null)
                         oldmessage.DeleteAsync().Wait();
                 }
                 RestUserMessage message = channel.SendMessageAsync(embed: _gW2ApiHandler.GetRaidEmbed()).Result;
