@@ -1,9 +1,9 @@
-﻿using FadedVanguardBot._1.Models.Config;
+﻿using FadedVanguardBot.Models.Config;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
 
-namespace FadedVanguardBot._1.Service
+namespace FadedVanguardBot.Service
 {
     public class Gw2ApiHandler
     {

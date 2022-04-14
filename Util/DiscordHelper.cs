@@ -2,7 +2,7 @@
 using Discord.WebSocket;
 using FadedBot;
 
-namespace FadedVanguardBot0._1.Util
+namespace FadedVanguardBot.Util
 {
     public class DiscordHelper
     {

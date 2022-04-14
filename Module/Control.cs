@@ -1,12 +1,12 @@
 ﻿using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
-using FadedVanguardBot._1.Models.Config;
-using FadedVanguardBot0._1.Util;
+using FadedVanguardBot.Models.Config;
+using FadedVanguardBot.Util;
 using System;
 using System.Threading.Tasks;
 
-namespace FadedVanguardBot._1.Module
+namespace FadedVanguardBot.Module
 {
     public class Control : InteractionModuleBase<SocketInteractionContext>
     {

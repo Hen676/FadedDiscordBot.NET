@@ -1,12 +1,12 @@
 ﻿using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
-using FadedVanguardBot._1.Events;
-using FadedVanguardBot._1.Models.Config;
-using FadedVanguardBot0._1.Util;
+using FadedVanguardBot.Events;
+using FadedVanguardBot.Models.Config;
+using FadedVanguardBot.Util;
 using System.Threading.Tasks;
 
-namespace FadedVanguardBot._1.Module
+namespace FadedVanguardBot.Module
 {
     [Group("motd", "Commands to edit Message of the Day scheduled messages.")]
     public class MotdMessage : InteractionModuleBase<SocketInteractionContext>

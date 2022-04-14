@@ -2,13 +2,12 @@
 using Discord;
 using Discord.Rest;
 using Discord.WebSocket;
-using FadedVanguardBot._1.Models.Config;
-using FadedVanguardBot._1.Service;
-using FadedVanguardBot._1.Util;
-using FadedVanguardBot0._1.Util;
+using FadedVanguardBot.Models.Config;
+using FadedVanguardBot.Service;
+using FadedVanguardBot.Util;
 using System.Threading.Tasks;
 
-namespace FadedVanguardBot._1.Events
+namespace FadedVanguardBot.Events
 {
     public class RaidMessageEvent : IInvocable
     {

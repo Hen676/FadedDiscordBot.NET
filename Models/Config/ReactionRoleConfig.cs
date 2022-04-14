@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FadedVanguardBot0._1.Models.Config
+namespace FadedVanguardBot0.Models.Config
 {
     public class ReactionRoleConfig
     {

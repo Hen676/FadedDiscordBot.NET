@@ -2,13 +2,12 @@
 using Discord.Interactions;
 using Discord.Rest;
 using Discord.WebSocket;
-using FadedVanguardBot._1.Models.Config;
-using FadedVanguardBot._1.Util;
-using FadedVanguardBot0._1.Util;
+using FadedVanguardBot.Models.Config;
+using FadedVanguardBot.Util;
 using System;
 using System.Threading.Tasks;
 
-namespace FadedVanguardBot0._1.Module
+namespace FadedVanguardBot.Module
 {
     [Group("reactrole", "Commands to add self asigning role message")]
     public class RoleReaction : InteractionModuleBase<SocketInteractionContext>

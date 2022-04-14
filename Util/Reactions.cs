@@ -1,4 +1,4 @@
-﻿namespace FadedVanguardBot._1.Util
+﻿namespace FadedVanguardBot.Util
 {
     public class Reactions
     {

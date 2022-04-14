@@ -1,11 +1,11 @@
 ﻿using Coravel.Invocable;
 using Discord;
 using Discord.WebSocket;
-using FadedVanguardBot._1.Service;
+using FadedVanguardBot.Service;
 using System;
 using System.Threading.Tasks;
 
-namespace FadedVanguardBot._1.Events
+namespace FadedVanguardBot.Events
 {
     public class ActivityEvent : IInvocable
     {

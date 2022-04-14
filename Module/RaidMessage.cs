@@ -1,15 +1,14 @@
 ﻿using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
-using FadedVanguardBot._1.Events;
-using FadedVanguardBot._1.Models.Config;
-using FadedVanguardBot._1.Util;
-using FadedVanguardBot0._1.Util;
+using FadedVanguardBot.Events;
+using FadedVanguardBot.Models.Config;
+using FadedVanguardBot.Util;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FadedVanguardBot._1.Module
+namespace FadedVanguardBot.Module
 {
     [Group("raid", "Commands to edit Raid scheduled messages.")]
     public class RaidMessage : InteractionModuleBase<SocketInteractionContext>

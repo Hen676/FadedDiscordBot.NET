@@ -3,8 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>FadedVanguardBot0._1</RootNamespace>
+    <RootNamespace>FadedVanguardBot</RootNamespace>
+    <ApplicationIcon>faded_vanguard_icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="faded_vanguard_icon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="coravel" Version="4.1.1" />

@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace FadedVanguardBot._1.Models.Config
+namespace FadedVanguardBot.Models.Config
 {
     public class Config
     {
