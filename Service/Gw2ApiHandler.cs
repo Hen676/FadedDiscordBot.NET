@@ -1,11 +1,9 @@
-﻿using Discord;
-using FadedBot;
-using FadedVanguardBot0._1.Util;
+﻿using FadedVanguardBot._1.Models.Config;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
 
-namespace FadedVanguardBot0._1.Service
+namespace FadedVanguardBot._1.Service
 {
     public class Gw2ApiHandler
     {
@@ -44,7 +42,7 @@ namespace FadedVanguardBot0._1.Service
             return (string)JObject.Parse(response.Content.ReadAsStringAsync().Result)["motd"];
         }
 
-        public Embed GetRaidEmbed()
+        public string GetRaidUrl()
         {
             // Get Raid icon url from gw2 api
             var response = _httpClient.GetAsync("files/map_raid_entrance").Result;
@@ -52,17 +50,7 @@ namespace FadedVanguardBot0._1.Service
             {
                 return null;
             }
-            string url = (string)JObject.Parse(response.Content.ReadAsStringAsync().Result)["icon"];
-
-            // Create raid embed
-            var embed = new EmbedBuilder();
-            embed.WithTitle("Raid Training Vote");
-            embed.WithDescription("Vote for which Raid Wing you want training for this week.\n" +
-                "See Message of the Day to see when it's happening");
-            embed.WithThumbnailUrl(url);
-            embed.WithColor(Bot.color);
-            embed.WithCurrentTimestamp();
-            return embed.Build();
+            return (string)JObject.Parse(response.Content.ReadAsStringAsync().Result)["icon"];
         }
     }
 }

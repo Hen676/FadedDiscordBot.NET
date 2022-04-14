@@ -18,8 +18,11 @@
       "Message": null,
       "Update": false
     },
+    "ReactionRole": {
+      "Message": null,
+      "Roles": []
+    },
     "ShardIdDebug": 0,
-    "Token": "<Insert Bot Token>",
-    "TokenDebug": "<For debug use only>"
+    "Token": "<Insert Bot Token>"
   }
 }

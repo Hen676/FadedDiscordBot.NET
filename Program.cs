@@ -2,11 +2,11 @@
 using System;
 using System.Threading.Tasks;
 
-namespace FadedVanguardBot0._1
+namespace FadedVanguardBot._1
 {
     class Program
     {
-        public static string version = "1.0.0";
+        public static string version = "1.0.1";
         static Task Main(string[] args)
         {
             if (args.Length == 0)

@@ -1,11 +1,11 @@
 ﻿using Coravel.Invocable;
 using Discord;
 using Discord.WebSocket;
-using FadedVanguardBot0._1.Service;
+using FadedVanguardBot._1.Service;
 using System;
 using System.Threading.Tasks;
 
-namespace FadedVanguardBot0._1.Events
+namespace FadedVanguardBot._1.Events
 {
     public class ActivityEvent : IInvocable
     {
@@ -27,7 +27,7 @@ namespace FadedVanguardBot0._1.Events
                     _discord.SetActivityAsync(new Game($"on V{Program.version}", ActivityType.Playing, ActivityProperties.None));
                     break;
                 case 2:
-                    _discord.SetActivityAsync(new Game("Henry unable to spell 'Toast'", ActivityType.Watching, ActivityProperties.None));
+                    _discord.SetActivityAsync(new Game("Henry unable to spell 'Toast'.", ActivityType.Watching, ActivityProperties.None));
                     break;
                 case 3:
                     _discord.SetActivityAsync(new Game("with the new / comamnds!", ActivityType.Playing, ActivityProperties.None));

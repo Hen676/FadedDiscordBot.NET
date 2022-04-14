@@ -2,11 +2,13 @@
 using Discord;
 using Discord.Rest;
 using Discord.WebSocket;
-using FadedVanguardBot0._1.Service;
+using FadedVanguardBot._1.Models.Config;
+using FadedVanguardBot._1.Service;
+using FadedVanguardBot._1.Util;
 using FadedVanguardBot0._1.Util;
 using System.Threading.Tasks;
 
-namespace FadedVanguardBot0._1.Events
+namespace FadedVanguardBot._1.Events
 {
     public class RaidMessageEvent : IInvocable
     {
@@ -32,11 +34,18 @@ namespace FadedVanguardBot0._1.Events
                     if (oldmessage != null)
                         oldmessage.DeleteAsync().Wait();
                 }
-                RestUserMessage message = channel.SendMessageAsync(embed: _gW2ApiHandler.GetRaidEmbed()).Result;
-                foreach (string reaction in Reactions.reactionNames)
+
+                Embed embed = DiscordHelper.EmbedCreator(
+                "Raid Training Vote",
+                "Vote for which Raid Wing you want training for this week.\n" +
+                "See Message of the Day to see when it's happening",
+                _gW2ApiHandler.GetRaidUrl(), _discord.CurrentUser);
+                RestUserMessage message = channel.SendMessageAsync(embed: embed).Result;
+                foreach (string reaction in Reactions.raidReactionNames)
                 {
                     message.AddReactionAsync(new Emoji(reaction)).Wait();
                 }
+                // TODO: Check reactions are added?
                 _config.Bot.Raid.Message = message.Id;
                 _config.SaveConfig();
             }

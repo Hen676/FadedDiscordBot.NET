@@ -3,10 +3,10 @@ using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
 using FadedBot.Service;
-using FadedVanguardBot0._1;
-using FadedVanguardBot0._1.Events;
-using FadedVanguardBot0._1.Service;
-using FadedVanguardBot0._1.Util;
+using FadedVanguardBot._1;
+using FadedVanguardBot._1.Events;
+using FadedVanguardBot._1.Models.Config;
+using FadedVanguardBot._1.Service;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,13 +27,16 @@ namespace FadedBot
 
         public Bot()
         {
+            string path = Program.IsDebug() ? "debug_config.json" : "config.json";
+
             // Config
             _config = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile(path: "config.json", optional: false)
+                .AddJsonFile(path: path, optional: false)
                 .Build()
                 .Get<Config>();
 
+            // Logger
             var log = new LoggerConfiguration()
                 .WriteTo.Console()
                 .WriteTo.File("log-.txt", rollingInterval: RollingInterval.Day);
@@ -41,15 +44,15 @@ namespace FadedBot
                 log.MinimumLevel.Debug();
             else
                 log.MinimumLevel.Information();
-
             Log.Logger = log.CreateLogger();
         }
 
         public async Task MainAsync()
         {
+            // Create serivces
             var host = Host.CreateDefaultBuilder().ConfigureServices(ConfiguredService).Build();
 
-            // Start and get serivces
+            // Get serivces
             _discord = host.Services.GetRequiredService<DiscordSocketClient>();
             _commands = host.Services.GetRequiredService<InteractionService>();
 
@@ -59,8 +62,7 @@ namespace FadedBot
             _commands.Log += LogAsync;
 
             // Launch client
-            string discordToken = Program.IsDebug() ? _config.Bot.TokenDebug : _config.Bot.Token;
-            await _discord.LoginAsync(TokenType.Bot, discordToken);
+            await _discord.LoginAsync(TokenType.Bot, _config.Bot.Token);
             await _discord.StartAsync();
             await host.Services.GetRequiredService<CommonHandler>().InitializeAsync();
 

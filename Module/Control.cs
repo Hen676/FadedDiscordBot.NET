@@ -1,11 +1,12 @@
 ﻿using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
+using FadedVanguardBot._1.Models.Config;
 using FadedVanguardBot0._1.Util;
 using System;
 using System.Threading.Tasks;
 
-namespace FadedVanguardBot0._1.Module
+namespace FadedVanguardBot._1.Module
 {
     public class Control : InteractionModuleBase<SocketInteractionContext>
     {
@@ -19,10 +20,10 @@ namespace FadedVanguardBot0._1.Module
             _discord.UserJoined += OnUserJoinedEvent;
         }
 
-        private Task OnUserJoinedEvent(SocketGuildUser arg)
+        private Task OnUserJoinedEvent(SocketGuildUser socketGuildUser)
         {
             if (_config.Bot.AutoRole.Toggle && _config.Bot.AutoRole.Role.HasValue)
-                arg.AddRoleAsync(_config.Bot.AutoRole.Role.Value);
+                socketGuildUser.AddRoleAsync(_config.Bot.AutoRole.Role.Value);
             return Task.CompletedTask;
         }
 
@@ -31,16 +32,25 @@ namespace FadedVanguardBot0._1.Module
         [SlashCommand("autorole", "Setup simple autorole command.")]
         public async Task AutoRole(SocketRole role = null, bool? on = null)
         {
-            if (role.Permissions.Administrator)
-            {
-                await RespondAsync($"Autorole cannot use [{role.Name}] role as it has Administrator permission");
-                return;
-            }
             await Context.Channel.TriggerTypingAsync();
             bool toggle = false;
 
             if (role != null)
             {
+                if (role.IsEveryone)
+                {
+                    await RespondAsync(
+                        embed: DiscordHelper.EmbedCreator(
+                            $"Invalid Command", $"<@&{role.Id}> cannot be added"), ephemeral: true);
+                    return;
+                }
+                if (role.Permissions.Administrator)
+                {
+                    await RespondAsync(
+                        embed: DiscordHelper.EmbedCreator(
+                            $"Invalid Command", $"<@&{role.Id}> has administrator permision and can't be added"), ephemeral: true);
+                    return;
+                }
                 _config.Bot.AutoRole.Role = role.Id;
                 toggle = true;
             }
@@ -53,15 +63,17 @@ namespace FadedVanguardBot0._1.Module
                 _config.SaveConfig();
 
             string startingstring = toggle ? "Updated" : "Current";
-            await RespondAsync($"{startingstring} autorole update command: [@{_config.Bot.AutoRole.Role} and {_config.Bot.AutoRole.Toggle}]");
+            await RespondAsync(
+                embed: DiscordHelper.EmbedCreator(
+                    $"{startingstring} autorole command", $"<@&{_config.Bot.AutoRole.Role}> and {_config.Bot.AutoRole.Toggle}"));
         }
 
         [SlashCommand("ping", "Simple ping command!")]
         public async Task Ping()
         {
             await Context.Channel.TriggerTypingAsync();
-            string time = (DateTime.UtcNow - Context.Interaction.CreatedAt.UtcDateTime).TotalMilliseconds.ToString();
-            await RespondAsync($"Pong: [{time}]");
+            string time = (DateTime.UtcNow - Context.Interaction.CreatedAt).Milliseconds.ToString();
+            await RespondAsync(embed: DiscordHelper.EmbedCreator($"Pong <{time}ms>"));
         }
     }
 }

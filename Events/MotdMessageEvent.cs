@@ -1,11 +1,11 @@
 ﻿using Coravel.Invocable;
 using Discord.WebSocket;
-using FadedVanguardBot0._1.Service;
-using FadedVanguardBot0._1.Util;
+using FadedVanguardBot._1.Models.Config;
+using FadedVanguardBot._1.Service;
 using System;
 using System.Threading.Tasks;
 
-namespace FadedVanguardBot0._1.Events
+namespace FadedVanguardBot._1.Events
 {
     public class MotdMessageEvent : IInvocable
     {
