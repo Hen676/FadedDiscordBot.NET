@@ -53,7 +53,7 @@ namespace FadedVanguardBot.Module
             string startingstring = toggle ? "Updated" : "Current";
             await RespondAsync(
                 embed: DiscordHelper.EmbedCreator(
-                    $"{startingstring} Message of the Day message", $"<#{_config.Bot.Motd.Channel}> and {_config.Bot.Motd.Update}")
+                    $"{startingstring} Message of the Day message", $"<#{_config.Bot.Motd.Channel}>\n{_config.Bot.Motd.Update}")
                 );
         }
     }

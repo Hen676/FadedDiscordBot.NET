@@ -71,7 +71,7 @@ namespace FadedVanguardBot.Module
             string startingstring = toggle ? "Updated" : "Current";
             await RespondAsync(
                 embed: DiscordHelper.EmbedCreator(
-                    $"{startingstring} raid message", $"<#{_config.Bot.Raid.Channel}> and {_config.Bot.Raid.Update}")
+                    $"{startingstring} raid message", $"<#{_config.Bot.Raid.Channel}>\n{_config.Bot.Raid.Update}")
                 );
         }
     }

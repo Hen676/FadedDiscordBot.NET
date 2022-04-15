@@ -63,17 +63,21 @@ namespace FadedVanguardBot.Module
                 _config.SaveConfig();
 
             string startingstring = toggle ? "Updated" : "Current";
-            await RespondAsync(
-                embed: DiscordHelper.EmbedCreator(
-                    $"{startingstring} autorole command", $"<@&{_config.Bot.AutoRole.Role}> and {_config.Bot.AutoRole.Toggle}"));
+            if(_config.Bot.AutoRole.Role == null)
+                await RespondAsync(
+                    embed: DiscordHelper.EmbedCreator(
+                        $"{startingstring} autorole command", $"Null role\n{_config.Bot.AutoRole.Toggle}"));
+            else
+                await RespondAsync(
+                    embed: DiscordHelper.EmbedCreator(
+                        $"{startingstring} autorole command", $"<@&{_config.Bot.AutoRole.Role}>\n{_config.Bot.AutoRole.Toggle}"));
         }
 
         [SlashCommand("ping", "Simple ping command!")]
         public async Task Ping()
         {
             await Context.Channel.TriggerTypingAsync();
-            string time = (DateTime.UtcNow - Context.Interaction.CreatedAt).Milliseconds.ToString();
-            await RespondAsync(embed: DiscordHelper.EmbedCreator($"Pong <{time}ms>"));
+            await RespondAsync(embed: DiscordHelper.EmbedCreator($"Pong", $"<{_discord.Latency}ms>"));
         }
     }
 }
