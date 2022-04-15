@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
+using FadedVanguardBot.Util;
 using Serilog;
 using System;
 using System.Reflection;
@@ -32,52 +33,66 @@ namespace FadedBot.Service
             _commands.ComponentCommandExecuted += ComponentCommandExecuted;
         }
 
-        private Task ComponentCommandExecuted(ComponentCommandInfo arg1, IInteractionContext arg2, IResult arg3)
+        private Task ComponentCommandExecuted(ComponentCommandInfo componentCommandInfo, IInteractionContext interactionContext, IResult result)
         {
-            if (!arg3.IsSuccess)
+            if (!result.IsSuccess)
             {
-                ErrorHandling(arg3);
+                ErrorHandling(interactionContext, result);
             }
             return Task.CompletedTask;
         }
 
-        private Task ContextCommandExecuted(ContextCommandInfo arg1, IInteractionContext arg2, IResult arg3)
+        private Task ContextCommandExecuted(ContextCommandInfo contextCommandInfo, IInteractionContext interactionContext, IResult result)
         {
-            if (!arg3.IsSuccess)
+            if (!result.IsSuccess)
             {
-                ErrorHandling(arg3);
+                ErrorHandling(interactionContext, result);
             }
             return Task.CompletedTask;
         }
 
-        private Task SlashCommandExecuted(SlashCommandInfo arg, IInteractionContext arg2, IResult arg3)
+        private Task SlashCommandExecuted(SlashCommandInfo slashCommandInfo, IInteractionContext interactionContext, IResult result)
         {
-            if (!arg3.IsSuccess)
+            if (!result.IsSuccess)
             {
-
-                ErrorHandling(arg3);
+                ErrorHandling(interactionContext, result);
             }
             return Task.CompletedTask;
         }
 
-        private void ErrorHandling(IResult arg)
+        private void ErrorHandling(IInteractionContext interactionContext, IResult result)
         {
-            switch (arg.Error)
+            switch (result.Error)
             {
                 case InteractionCommandError.UnmetPrecondition:
-                    // implement
+                    interactionContext.Interaction.RespondAsync(
+                        embed: DiscordHelper.EmbedCreator(
+                            "Error", "You are unable to access this command.\nCheck if you have the required guild permissions"), ephemeral: true
+                            );
                     break;
                 case InteractionCommandError.UnknownCommand:
-                    // implement
+                    interactionContext.Interaction.RespondAsync(
+                        embed: DiscordHelper.EmbedCreator(
+                            "Error", "Command used is Unkown"), ephemeral: true
+                            );
                     break;
                 case InteractionCommandError.BadArgs:
-                    // implement
+                    interactionContext.Interaction.RespondAsync(
+                        embed: DiscordHelper.EmbedCreator(
+                            "Error", "Command used has invalid arguments"), ephemeral: true
+                            );
                     break;
                 case InteractionCommandError.Exception:
-                    // implement
+                    interactionContext.Interaction.RespondAsync(
+                        embed: DiscordHelper.EmbedCreator(
+                            "Error", "Command had an error during its operation"), ephemeral: true
+                            );
                     break;
                 case InteractionCommandError.Unsuccessful:
-                    // implement
+                    interactionContext.Interaction.RespondAsync(
+                        embed: DiscordHelper.EmbedCreator(
+                            "Error", "Command was unsuccessful"), ephemeral: true
+                            );
                     break;
                 default:
                     break;

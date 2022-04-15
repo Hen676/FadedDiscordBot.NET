@@ -27,12 +27,10 @@ namespace FadedBot
 
         public Bot()
         {
-            string path = Program.IsDebug() ? "debug_config.json" : "config.json";
-
             // Config
             _config = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile(path: path, optional: false)
+                .AddJsonFile(path: Program.IsDebug() ? "debug_config.json" : "config.json", optional: false)
                 .Build()
                 .Get<Config>();
 
@@ -127,14 +125,18 @@ namespace FadedBot
             Log.Write(severity, arg.Exception, "[{Source}] {Message}", arg.Source, arg.Message);
             await Task.CompletedTask;
         }
-        private void ConfiguredService(HostBuilderContext arg1, IServiceCollection arg2)
+        private void ConfiguredService(HostBuilderContext hostBuilderContext, IServiceCollection services)
         {
-            arg2.AddScheduler()
+            services.AddScheduler()
                 .AddTransient<RaidMessageEvent>()
                 .AddTransient<MotdMessageEvent>()
                 .AddTransient<ActivityEvent>()
                 .AddSingleton(_config)
-                .AddSingleton<DiscordSocketClient>()
+                .AddSingleton(new DiscordSocketClient(new DiscordSocketConfig 
+                {
+                    GatewayIntents = GatewayIntents.AllUnprivileged | GatewayIntents.GuildMembers,
+                    MessageCacheSize = 10
+                }))
                 .AddSingleton(x => new InteractionService(x.GetRequiredService<DiscordSocketClient>()))
                 .AddSingleton<Gw2ApiHandler>()
                 .AddSingleton<CommonHandler>()
