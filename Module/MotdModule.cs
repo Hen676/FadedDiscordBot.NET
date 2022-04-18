@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 namespace FadedVanguardBot.Module
 {
     [Group("motd", "Commands to edit Message of the Day scheduled messages.")]
-    public class MotdMessage : InteractionModuleBase<SocketInteractionContext>
+    public class MotdModule : InteractionModuleBase<SocketInteractionContext>
     {
         private readonly Config _config;
-        private readonly MotdMessageEvent _motdMessageEvent;
+        private readonly MotdEvent _motdMessageEvent;
 
-        public MotdMessage(Config config, MotdMessageEvent motdMessageEvent)
+        public MotdModule(Config config, MotdEvent motdMessageEvent)
         {
             _config = config;
             _motdMessageEvent = motdMessageEvent;

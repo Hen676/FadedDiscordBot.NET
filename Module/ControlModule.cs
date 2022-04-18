@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace FadedVanguardBot.Module
 {
-    public class Control : InteractionModuleBase<SocketInteractionContext>
+    public class ControlModule : InteractionModuleBase<SocketInteractionContext>
     {
         private readonly Config _config;
         private readonly DiscordSocketClient _discord;
 
-        public Control(Config config, DiscordSocketClient discord)
+        public ControlModule(Config config, DiscordSocketClient discord)
         {
             _config = config;
             _discord = discord;

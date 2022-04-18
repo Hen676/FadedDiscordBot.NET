@@ -22,7 +22,8 @@ namespace FadedVanguardBot
                         case "-v":
                             Console.WriteLine(version);
                             return Task.CompletedTask;
-                        case "-i":
+                        case "-h":
+                            Console.WriteLine("Implemnt :(");
                             break;
                         default:
                             break;

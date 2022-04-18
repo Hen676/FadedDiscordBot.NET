@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace FadedVanguardBot.Events
 {
-    public class RaidMessageEvent : IInvocable
+    public class WeeklyRaidTrainingEvent : IInvocable
     {
         private readonly Config _config;
         private readonly Gw2ApiHandler _gW2ApiHandler;
         private readonly DiscordSocketClient _discord;
 
-        public RaidMessageEvent(Config config, Gw2ApiHandler gW2ApiHandler, DiscordSocketClient discord)
+        public WeeklyRaidTrainingEvent(Config config, Gw2ApiHandler gW2ApiHandler, DiscordSocketClient discord)
         {
             _config = config;
             _gW2ApiHandler = gW2ApiHandler;

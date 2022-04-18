@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 namespace FadedVanguardBot.Module
 {
     [Group("reactrole", "Commands to add self asigning role message")]
-    public class RoleReaction : InteractionModuleBase<SocketInteractionContext>
+    public class RoleReactionModule : InteractionModuleBase<SocketInteractionContext>
     {
         private readonly Config _config;
         private readonly DiscordSocketClient _discord;
 
-        public RoleReaction(Config config, DiscordSocketClient discord)
+        public RoleReactionModule(Config config, DiscordSocketClient discord)
         {
             _config = config;
             _discord = discord;

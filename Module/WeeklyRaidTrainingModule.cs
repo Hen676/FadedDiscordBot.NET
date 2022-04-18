@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 namespace FadedVanguardBot.Module
 {
     [Group("raid", "Commands to edit Raid scheduled messages.")]
-    public class RaidMessage : InteractionModuleBase<SocketInteractionContext>
+    public class WeeklyRaidTrainingModule : InteractionModuleBase<SocketInteractionContext>
     {
         private readonly Config _config;
         private readonly DiscordSocketClient _discord;
-        private readonly RaidMessageEvent _raidMessageEvent;
+        private readonly WeeklyRaidTrainingEvent _raidMessageEvent;
 
-        public RaidMessage(Config config, DiscordSocketClient discord, RaidMessageEvent raidMessageEvent)
+        public WeeklyRaidTrainingModule(Config config, DiscordSocketClient discord, WeeklyRaidTrainingEvent raidMessageEvent)
         {
             _config = config;
             _discord = discord;

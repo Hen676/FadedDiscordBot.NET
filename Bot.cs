@@ -67,8 +67,8 @@ namespace FadedBot
             // Setup scheduler
             host.Services.UseScheduler(scheduler =>
             {
-                var raidJob = scheduler.Schedule<RaidMessageEvent>();
-                var motdJob = scheduler.Schedule<MotdMessageEvent>();
+                var raidJob = scheduler.Schedule<WeeklyRaidTrainingEvent>();
+                var motdJob = scheduler.Schedule<MotdEvent>();
                 var activityJob = scheduler.Schedule<ActivityEvent>();
 
                 if (Program.IsDebug())
@@ -128,8 +128,8 @@ namespace FadedBot
         private void ConfiguredService(HostBuilderContext hostBuilderContext, IServiceCollection services)
         {
             services.AddScheduler()
-                .AddTransient<RaidMessageEvent>()
-                .AddTransient<MotdMessageEvent>()
+                .AddTransient<WeeklyRaidTrainingEvent>()
+                .AddTransient<MotdEvent>()
                 .AddTransient<ActivityEvent>()
                 .AddSingleton(_config)
                 .AddSingleton(new DiscordSocketClient(new DiscordSocketConfig 
