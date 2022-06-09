@@ -15,7 +15,7 @@ namespace FadedVanguardBot
             }
             else
             {
-                foreach (String arg in args)
+                foreach (string arg in args)
                 {
                     switch (arg)
                     {
