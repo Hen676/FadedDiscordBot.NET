@@ -3,7 +3,6 @@ using Discord.Interactions;
 using Discord.WebSocket;
 using FadedVanguardBot.Models.Config;
 using FadedVanguardBot.Util;
-using System;
 using System.Threading.Tasks;
 
 namespace FadedVanguardBot.Module
@@ -63,7 +62,7 @@ namespace FadedVanguardBot.Module
                 _config.SaveConfig();
 
             string startingstring = toggle ? "Updated" : "Current";
-            if(_config.Bot.AutoRole.Role == null)
+            if (_config.Bot.AutoRole.Role == null)
                 await RespondAsync(
                     embed: DiscordHelper.EmbedCreator(
                         $"{startingstring} autorole command", $"Null role\n{_config.Bot.AutoRole.Toggle}"));

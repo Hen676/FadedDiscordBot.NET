@@ -132,7 +132,7 @@ namespace FadedBot
                 .AddTransient<MotdEvent>()
                 .AddTransient<ActivityEvent>()
                 .AddSingleton(_config)
-                .AddSingleton(new DiscordSocketClient(new DiscordSocketConfig 
+                .AddSingleton(new DiscordSocketClient(new DiscordSocketConfig
                 {
                     GatewayIntents = GatewayIntents.AllUnprivileged | GatewayIntents.GuildMembers,
                     MessageCacheSize = 10
