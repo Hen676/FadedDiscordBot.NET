@@ -6,7 +6,7 @@ namespace FadedVanguardBot
 {
     class Program
     {
-        public static string version = "1.0.2";
+        public static string version = "1.0.3";
         static Task Main(string[] args)
         {
             if (args.Length == 0)
