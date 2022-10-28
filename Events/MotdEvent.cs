@@ -35,7 +35,7 @@ namespace FadedVanguardBot.Events
                         _config.SaveConfig();
                         return Task.CompletedTask;
                     }
-                    else if (string.Equals(message.Content, motd, StringComparison.Ordinal))
+                    else if (!string.Equals(message.Content, motd))
                     {
                         channel.ModifyMessageAsync(message.Id, modify =>
                         {

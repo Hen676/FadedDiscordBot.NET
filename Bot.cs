@@ -24,6 +24,7 @@ namespace FadedBot
         private DiscordSocketClient _discord;
         private InteractionService _commands;
         public static readonly Color color = new(0x968E6C);
+        private bool _firstStartUp = true;
 
         public Bot()
         {
@@ -91,6 +92,8 @@ namespace FadedBot
 
         private async Task ReadyAsync()
         {
+            if (!_firstStartUp) return;
+
             if (Program.IsDebug())
             {
                 if (_config.Bot.ShardIdDebug.HasValue)

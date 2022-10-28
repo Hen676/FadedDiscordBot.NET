@@ -25,22 +25,21 @@ namespace FadedVanguardBot.Events
             {
                 case 1:
                     _discord.SetActivityAsync(new Game($"on V{Program.version}", ActivityType.Playing, ActivityProperties.None));
-                    break;
+                    return Task.CompletedTask;
                 case 2:
-                    _discord.SetActivityAsync(new Game("Henry unable to spell 'Toast'.", ActivityType.Watching, ActivityProperties.None));
-                    break;
+                    _discord.SetActivityAsync(new Game("Henry is unable to spell 'Toast'.", ActivityType.Watching, ActivityProperties.None));
+                    return Task.CompletedTask;
                 case 3:
                     _discord.SetActivityAsync(new Game("with the new / comamnds!", ActivityType.Playing, ActivityProperties.None));
-                    break;
+                    return Task.CompletedTask;
                 case 4:
                     _discord.SetActivityAsync(new Game($"{_gW2ApiHandler.GetMemeberCount()} guildies!", ActivityType.Watching, ActivityProperties.None));
                     i = 0;
-                    break;
+                    return Task.CompletedTask;
                 default:
-                    Console.WriteLine("Actvity is OOB, Currtent i=" + i.ToString());
-                    break;
+                    Console.WriteLine($"Actvity is OOB, {i}/4");
+                    return Task.CompletedTask;
             }
-            return Task.CompletedTask;
         }
     }
 }
