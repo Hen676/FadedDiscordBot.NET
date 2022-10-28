@@ -27,7 +27,7 @@ namespace FadedVanguardBot.Events
                     _discord.SetActivityAsync(new Game($"on V{Program.version}", ActivityType.Playing, ActivityProperties.None));
                     return Task.CompletedTask;
                 case 2:
-                    _discord.SetActivityAsync(new Game("Henry is unable to spell 'Toast'.", ActivityType.Watching, ActivityProperties.None));
+                    _discord.SetActivityAsync(new Game("Henry, unable to spell 'Toast'.", ActivityType.Watching, ActivityProperties.None));
                     return Task.CompletedTask;
                 case 3:
                     _discord.SetActivityAsync(new Game("with the new / comamnds!", ActivityType.Playing, ActivityProperties.None));
